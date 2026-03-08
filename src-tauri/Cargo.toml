@@ -1,0 +1,20 @@
+[package]
+name = "pc-updater"
+version = "0.0.0"
+description = "A Tauri App"
+authors = ["you"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1", features = [] }
+embed-resource = "2"
+
+[dependencies]
+tauri = { version = "1", features = [ "shell-execute"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[features]
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

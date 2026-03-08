@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PC Updater — Mettez à jour tous vos gestionnaires de paquets Windows en un clic." />
+  <title>PC Updater</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="header-icon">⚡</div>
+        <h1>PC <span>Updater</span></h1>
+      </div>
+      <div class="status-badge" id="global-status">
+        <span class="status-dot"></span>
+        <span id="global-status-text">Prêt</span>
+      </div>
+    </header>
+
+    <!-- Manager Cards -->
+    <section class="managers-grid" aria-label="Statut des gestionnaires">
+      <!-- Winget -->
+      <div class="manager-card" id="card-winget" data-manager="Winget">
+        <div class="card-top">
+          <span class="card-name">
+            <span class="card-icon">📦</span>
+            Winget
+          </span>
+          <span class="card-status-icon" id="icon-winget">⏳</span>
+        </div>
+        <span class="card-status-text" id="status-winget">En attente</span>
+      </div>
+
+      <!-- Scoop -->
+      <div class="manager-card" id="card-scoop" data-manager="Scoop">
+        <div class="card-top">
+          <span class="card-name">
+            <span class="card-icon">🍦</span>
+            Scoop
+          </span>
+          <span class="card-status-icon" id="icon-scoop">⏳</span>
+        </div>
+        <span class="card-status-text" id="status-scoop">En attente</span>
+      </div>
+
+      <!-- Chocolatey -->
+      <div class="manager-card" id="card-choco" data-manager="Chocolatey">
+        <div class="card-top">
+          <span class="card-name">
+            <span class="card-icon">🍫</span>
+            Chocolatey
+          </span>
+          <span class="card-status-icon" id="icon-choco">⏳</span>
+        </div>
+        <span class="card-status-text" id="status-choco">En attente</span>
+      </div>
+
+      <!-- Windows Update -->
+      <div class="manager-card" id="card-winupdate" data-manager="Windows Update">
+        <div class="card-top">
+          <span class="card-name">
+            <span class="card-icon">🪟</span>
+            Windows Update
+          </span>
+          <span class="card-status-icon" id="icon-winupdate">⏳</span>
+        </div>
+        <span class="card-status-text" id="status-winupdate">En attente</span>
+      </div>
+    </section>
+
+    <!-- Action Bar -->
+    <div class="action-bar">
+      <div class="progress-bar-wrapper" title="Progression globale">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+      <button class="btn-launch" id="btn-update">
+        Lancer les mises à jour
+      </button>
+    </div>
+
+    <!-- Terminal -->
+    <div class="terminal-wrapper">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+        </div>
+        <span class="terminal-title">output — powershell</span>
+        <button class="terminal-clear" id="btn-clear">Effacer</button>
+      </div>
+      <div id="terminal">
+        <div class="terminal-placeholder">Cliquez sur "Lancer les mises à jour" pour démarrer...</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="main.js" type="module"></script>
+</body>
+</html>
