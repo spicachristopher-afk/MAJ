@@ -1,0 +1,5 @@
+node_modules/
+src-tauri/target/
+.env
+package-lock.json
+Cargo.lock
