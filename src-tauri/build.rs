@@ -1,10 +1,12 @@
 fn main() {
-    // Tauri build (embed icon, etc.)
-    tauri_build::build();
-
-    // Embed UAC manifest (requireAdministrator) sur Windows uniquement.
-    // Utilise le type RT_MANIFEST (24) qui est distinct du type RT_ICON (3)
-    // utilisé par tauri-build — aucun conflit de ressources.
     #[cfg(target_os = "windows")]
-    embed_resource::compile("manifest.rc", embed_resource::NONE);
+    {
+        let windows = tauri_build::WindowsAttributes::new()
+            .app_manifest(include_str!("manifest.xml"));
+        tauri_build::try_build(tauri_build::Attributes::new().windows_attributes(windows))
+            .expect("Erreur lors du build Tauri");
+    }
+
+    #[cfg(not(target_os = "windows"))]
+    tauri_build::build();
 }
